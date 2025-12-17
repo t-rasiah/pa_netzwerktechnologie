@@ -3,7 +3,7 @@ import socket
 
 
 def recv_line(conn: socket.socket) -> str:
-    """lesen bis //n oder connection close."""
+    """Lesen bis \\n oder connection close."""
     buf = b""
     while b"\n" not in buf:
         chunk = conn.recv(1024)
@@ -23,21 +23,29 @@ def main() -> None:
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server.bind((args.host, args.port))
         server.listen(5)
+        server.settimeout(1.0)  # accept() blockiert nicht unendlich
 
         print(f"Pong server listening on {args.host}:{args.port}")
 
-        while True:
-            conn, addr = server.accept()
-            with conn:
-                line = recv_line(conn)
-
+        try:
+            while True:
                 try:
-                    n = int(line)
-                except ValueError:
-                    # ignore invalid input (KISS)
-                    continue
+                    conn, addr = server.accept()
+                except socket.timeout:
+                    continue  # loop zurück, Ctrl+C
 
-                conn.sendall(f"{n + 1}\n".encode("utf-8"))
+                with conn:
+                    line = recv_line(conn)
+
+                    try:
+                        n = int(line)
+                    except ValueError:
+                        continue
+
+                    conn.sendall(f"{n + 1}\n".encode("utf-8"))
+
+        except KeyboardInterrupt:
+            print("\nServer stopped cleanly")
 
 
 if __name__ == "__main__":
