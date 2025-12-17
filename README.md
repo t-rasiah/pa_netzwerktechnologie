@@ -1,30 +1,117 @@
 # pa_netzwerktechnologie
 # Projektarbeit für Netzwerktechnologie TEKO
 
-Wir haben in dem Modul Netzwerktechnologie den Auftrag erhalten einen Chatserver in Phyton zu programmiern.
-Folgendes wurde uns als Aufrag erteilt. 
+Wir haben in dem Modul Netzwerktechnologie den Auftrag erhalten einen Chatserver in Phyton zu programmieren.
+Folgendes wurde uns als Auftrag erteilt. 
 
-## 2 Projekt Chat Server (Level 2)
-Projektbeschrieb Implementiere ein UDP/TCP basierendes Chat Pro
-tokoll in Python (KISS=TUI, not GUI). Jede Erweiterung des Service
-(siehe unten für die Erweiterungen) gibt zusätzliche Punkte (sieheNotenschlüssel). 
-Jeder Erweiterung in einer separaten Datei oder git
-branch, so dass jede Erweiterung unabhängig getestet werden kann.
-Note/Punkte Siehe oben für grundlegende Notengebung
- 
-Implementation eines Chat Service mit einem Raum : 4-5
+## 1 Projekt Ping Pong (Level 1)
 
-Implementation eines multi-threaded Chat Service mit mehreren
-Räumen: 5-5
+**Projektbeschrieb:** Implementiere ein UDP/TCP basierendes Ping-Pong Pro
+tokoll in Python. Ein Ping wird gesendet und mit einem Pong beant
+wortet. Jede Erweiterung des Service (siehe unten für die Erweiterung
+gen) gibt zusätzliche Punkte (siehe Notenschlüssel). Jeder Erweiterung
+in einer separaten Datei oder git branch.
 
-Jedes weitere Feature: +0.2
-Features/Befehle Einige Befehlsideen für den Chat service:
+**Note/Punkte:** Siehe oben für grundlegende Notengebung
+- Implementation des Basic-Ping-Pong Service : 4-5
+- Jedes weitere Feature: +0.3
 
-server : print server information
-ls : list chat rooms
-cd : change chat room 
-users : list users in room
-connect : connect to server
-secure connect : connect in a secure manner to server
+**Features:** Siehe untenstehende Liste von Ping-pong Services/Architektur
 
-Wir werden versuchen dies nach den Corgaben aufzubauen und möglichs viele Erweiterungen zu implementieren. 
+### 1.1.1 Basic Ping-Pong
+Ping sendet eine Zahl n (=spin), und Pong antwortet mit n +1
+
+### 1.1.2 Ping-Pong mit UDP Fehlerbehandlung
+Manchmal können Daten-Fehler entstehen. Ping-Pong mit Fehlerbehand
+lung kann damit umgehen.
+
+### 1.1.3 Ping-Pong mit einem Ping-Pong Proxy
+Der proxy nimmt den ping-pong-pall und verlängert die Flugbahn ohne den
+Spin zu ändern.
+
+### 1.1.4 Kette von Ping-Pongs
+Generalisierung des Ping-Pong-Service: Mehrere PP service provider (PPSP)
+bilden eine Kette.
+
+### 1.1.5 Ping-Pong in einer Stern Topologie
+Implementiert ein eigene statische Stern Topologie, der Hub mach das Stern
+Routing.
+
+### 1.1.6 Ping-Pong in einer vermaschten Topologie
+Due to technical diffculties no image is provided.
+Consider a Mesh-Topology (like the internet) and implement a meshed
+network of ping-pong services on top of it.
+
+Wir werden versuchen dies nach den Vorgaben aufzubauen und möglichst viele Erweiterungen zu implementieren. 
+
+
+
+
+
+# Projekt Ping Pong (Level 1)
+
+---
+Dieses Projekt implementiert ein einfaches, aber erweiterbares **Ping-Pong-Protokoll** in Python auf Basis von **UDP und/oder TCP**.  
+Ein *Ping*-Client sendet eine Zahl (den sogenannten *Spin*) an einen *Pong*-Server, welcher darauf mit einer modifizierten Antwort reagiert.  
+Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
+
+Die Ping Pong Anwendung besteht aus zwei Server
+- `ping-server.py` - Ping Server
+- `pong-server.py` - Pong Server
+
+---
+
+## Funktionen
+Das Projekt umfasst folgende Funktionen und Erweiterungen:
+
+### Basic Ping-Pong
+- Ein Ping sendet eine Zahl `n` (Spin)
+- Der Pong antwortet mit `n + 1`
+
+### Ping-Pong mit UDP-Fehlerbehandlung
+- Erkennung und Behandlung von Paketverlusten oder fehlerhaften Daten
+- Wiederholtes Senden oder Validieren von Nachrichten
+
+### Ping-Pong mit Proxy
+- Ein Proxy leitet Ping- und Pong-Nachrichten weiter
+- Der Spin bleibt unverändert
+- Simuliert eine verlängerte Übertragungsstrecke
+
+### Kette von Ping-Pongs
+- Mehrere Ping-Pong-Service-Provider (PPSP) sind hintereinandergeschaltet
+- Jede Instanz verarbeitet und leitet die Nachricht weiter
+
+### Stern-Topologie
+- Statische Stern-Topologie
+- Ein zentraler Hub übernimmt das Routing
+- Clients kommunizieren ausschließlich über den Hub
+
+### Vermaschte Topologie
+- Mesh-Topologie ähnlich dem Internet
+- Mehrere gleichberechtigte Ping-Pong-Knoten
+- Nachrichten können über verschiedene Pfade weitergeleitet werden
+
+---
+
+## Voraussetzungen
+Für die Ausführung des Projekts werden folgende Voraussetzungen benötigt:
+
+- Python **3.8 oder höher**
+- Betriebssystem mit Netzwerkunterstützung (Linux, macOS oder Windows)
+- Grundlegende Kenntnisse in:
+  - Python
+  - Netzwerkprogrammierung (UDP/TCP)
+  - Kommandozeile
+
+Optionale Tools:
+- `git` für Versionsverwaltung und Branches
+- Virtuelle Python-Umgebung (venv)
+
+---
+
+## Server starten
+> **Hinweis:** Dieser Abschnitt dient als Vorlage und wird später ergänzt.
+
+Beispielhafter Start eines Pong-Servers:
+```bash
+python pong_server.py
