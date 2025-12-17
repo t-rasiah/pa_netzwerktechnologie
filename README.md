@@ -56,8 +56,8 @@ Ein *Ping*-Client sendet eine Zahl (den sogenannten *Spin*) an einen *Pong*-Serv
 Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
 
 Die Ping Pong Anwendung besteht aus zwei Server
-- `ping-server.py` - Ping Server
-- `pong-server.py` - Pong Server
+- `ping_client.py` - Ping Client
+- `pong_server.py` - Pong Server
 
 ---
 
