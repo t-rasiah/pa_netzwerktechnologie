@@ -42,3 +42,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# "getestet und funktioniert"
+# "Starten des Pong Servers durch diesen Befehl: "py Code\pong_server.py --host 127.0.0.1 --port 9000"

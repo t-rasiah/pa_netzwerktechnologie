@@ -55,7 +55,7 @@ Dieses Projekt implementiert ein einfaches, aber erweiterbares **Ping-Pong-Proto
 Ein *Ping*-Client sendet eine Zahl (den sogenannten *Spin*) an einen *Pong*-Server, welcher darauf mit einer modifizierten Antwort reagiert.  
 Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
 
-Die Ping Pong Anwendung besteht aus zwei Server
+Die Ping Pong Anwendung besteht aus einem Server und einem "Client"
 - `ping_client.py` - Ping Client
 - `pong_server.py` - Pong Server
 
@@ -96,7 +96,7 @@ Das Projekt umfasst folgende Funktionen und Erweiterungen:
 ## Voraussetzungen
 Für die Ausführung des Projekts werden folgende Voraussetzungen benötigt:
 
-- Python **3.8 oder höher**
+- Python **3.11 oder höher**
 - Betriebssystem mit Netzwerkunterstützung (Linux, macOS oder Windows)
 - Grundlegende Kenntnisse in:
   - Python

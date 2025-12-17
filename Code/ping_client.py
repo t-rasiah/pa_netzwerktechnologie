@@ -29,3 +29,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+# "getestet und funktioniert"
+# "Ping Client eingabe: "py Code\ping_client.py --host 127.0.0.1 --port 9000 --n 41" > bei --n 41 wäre Ausgabe nun 42!
