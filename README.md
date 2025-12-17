@@ -5,9 +5,7 @@ Dieses Projekt implementiert ein einfaches, aber erweiterbares **Ping-Pong-Proto
 Ein *Ping*-Client sendet eine Zahl (den sogenannten *Spin*) an einen *Pong*-Server, welcher darauf mit einer modifizierten Antwort reagiert.  
 Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
 
-Die Ping Pong Anwendung besteht aus einem Server und einem "Client"
-- `ping_client.py` - Ping Client
-- `pong_server.py` - Pong Server
+
 
 ---
 
@@ -18,9 +16,17 @@ Das Projekt umfasst folgende Funktionen und Erweiterungen:
 - Ein Ping sendet eine Zahl `n` (Spin)
 - Der Pong antwortet mit `n + 1`
 
-### Ping-Pong mit UDP-Fehlerbehandlung
-- Erkennung und Behandlung von Paketverlusten oder fehlerhaften Daten
-- Wiederholtes Senden oder Validieren von Nachrichten
+Die Ping Pong Anwendung besteht aus einem Server und einem "Client"
+- `ping_client.py` - Ping Client (TCP)
+- `pong_server.py` - Pong Server (TCP)
+
+
+### Ping-Pong mit UDP
+- XX
+- `udp_ping_client.py` - Ping Client (UDP)
+- `udp_pong_server.py` - Pong Server (UDP)
+
+
 
 ### Ping-Pong mit Proxy
 - Ein Proxy leitet Ping- und Pong-Nachrichten weiter
