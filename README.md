@@ -109,9 +109,21 @@ Optionale Tools:
 
 ---
 
+
+## Client starten
+> **Hinweis:** Dieser Abschnitt dient als Vorlage und wird später ergänzt.
+
+Beispielhafter Start eines Ping-Client:
+
+>`ping_server.py`
+
+
+
+---
+
 ## Server starten
 > **Hinweis:** Dieser Abschnitt dient als Vorlage und wird später ergänzt.
 
 Beispielhafter Start eines Pong-Servers:
-```bash
-python pong_server.py
+
+>`pong_server.py`
