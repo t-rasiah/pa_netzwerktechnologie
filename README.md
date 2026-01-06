@@ -45,9 +45,6 @@ network of ping-pong services on top of it.
 Wir werden versuchen dies nach den Vorgaben aufzubauen und möglichst viele Erweiterungen zu implementieren. 
 
 
-
-
-
 # Projekt Ping Pong (Level 1)
 
 ---
@@ -77,6 +74,14 @@ Die Ping Pong Anwendung besteht aus einem Server und einem Client
 - `udp_ping_client.py` - Ping Client (UDP)
 - `udp_pong_server.py` - Pong Server (UDP)
 
+### Ping Pong mit UDP und Fehlerbehandlung
+- UDP Ping Pong mit Validierung, Timeout, falscher Zählung
+- UDP kann Pakete verlieren oder Müll liefern. Der Client implementiert Timeout+Retry, prüft das Antwortformat und den Datentyp,
+und validiert zusätzlich semantisch, dass die Antwort exakt n+1 ist.
+
+Die Pingpong Anwendung besteht aus einem Server und einem Client
+- `udp_pong_server.py`
+- `udp_ping_client.py`
 
 ### Ping-Pong mit Proxy
 - Ein Proxy leitet Ping- und Pong-Nachrichten weiter
@@ -110,8 +115,7 @@ Starten des Pong Servers über folgenden Befehl in der Kommandozeile:
 
 Dann erscheint folgendes: ``Pong server listening on 127.0.0.1:9000`` somit ist der Server einsatzbereit und hört Port 9000 ab.
 
-Für die Beendung des Servers, muss in der Commandline `Ctrl + C` gedrückt werden. 
-
+Für die Beendung des Servers, muss in der Commandline `Ctrl + C` gedrückt werden.
 
 ### Betrieb Client TCP
 Folgende Datei wird dazu benötigt: `ping_client.py`
@@ -143,6 +147,30 @@ Folgender Befehl wird in einem Seperaten Terminal/Commandline ausgeführt: `py C
 Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Server wird immer die Zahl X+1 wiedergeben.
 
 `--n` muss eine Zahl sein, ansonnsten wird der Client eine Fehlermeldung ausgeben. `error argument --n: invalid value: "X"
+
+---
+
+### Betrieb Server und Client UDP mit Fehlerbehandlung
+> Ähnlich wie bei UDP ohne Fehlerbehandlung, hier sind 3 Szenarien möglich.
+
+Folgende Dateien werden benötigt: `udp_pong_server_valid.py` und `udp_ping_client_valid.py`
+
+
+Folgende Befehle werden wie bei Basic in die Kommandozeilen eingetragen.
+#### Normalbetrieb (Alles korrekt)
+Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004`
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7
+
+#### Falscher Datentyp (Server sendet Text)
+Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --send-text`
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7 --timeout 0.3 --retries 3`
+Info: Client erkennt abc als ungültig, macht retrys und beendet nach Timeoutzeit. 
+
+
+#### Falsche zählung (Server sendet n+2)
+Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --wrong-reply`
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7`
+Info: Client erkennt Pongzahl als ungültig und gibt Meldung darüber. 
 
 
 ### Betrieb Proxy Server für TCP
