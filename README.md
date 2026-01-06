@@ -51,11 +51,9 @@ Wir werden versuchen dies nach den Vorgaben aufzubauen und möglichst viele Erwe
 # Projekt Ping Pong (Level 1)
 
 ---
-Dieses Projekt implementiert ein einfaches, aber erweiterbares Ping-Pong-Protokoll in Python auf Basis von UDP und TCP. 
-Ein Ping-Client sendet eine Zahl (den sogenannten Spin) an einen Pong-Server, welcher darauf mit einer modifizierten Antwort reagiert.  
+Dieses Projekt implementiert ein einfaches, aber erweiterbares Ping-Pong-Protokoll in Python auf Basis von UDP / TCP. 
+Ein Ping-Client sendet eine Zahl (den sogenannten Spin) an einen Pong-Server, welcher darauf mit einer modifizierten Antwort reagiert.
 Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
-
-
 
 ---
 
@@ -88,40 +86,64 @@ Die Ping Pong Anwendung besteht aus einem Server und einem Client
 Die Proxyanwendung besteht aus folgender Datei: 
 - `proxy.py` - Proxy Server
 
-
 ---
 
 ## Voraussetzungen
 Für die Ausführung des Projekts werden folgende Voraussetzungen benötigt:
 
-- Python **3.11 oder höher**
+- Python 3.11 oder höher
 - Betriebssystem mit Netzwerkunterstützung (Linux, macOS oder Windows)
 - Grundlegende Kenntnisse in:
   - Python
   - Netzwerkprogrammierung (UDP/TCP)
   - Kommandozeile
 
-Optionale Tools:
-- `git` für Versionsverwaltung und Branches
-- Virtuelle Python-Umgebung (venv)
+---
+
+## Bedienungsanleitung
+
+### Betrieb Server TCP
+Folgende Datei wird dazu benötigt: `pong_server.py`
+
+Starten des Pong Servers über folgenden Befehl in der Kommandozeile:
+`py Code\pong_server.py --host 127.0.0.1 --port 9000`
+
+Dann erscheint folgendes: ``Pong server listening on 127.0.0.1:9000`` somit ist der Server einsatzbereit und hört Port 9000 ab.
+
+Für die Beendung des Servers, muss in der Commandline `Ctrl + C` gedrückt werden. 
+
+
+### Betrieb Client TCP
+Folgende Datei wird dazu benötigt: `ping_client.py`
+> Voraussetzung der Server läuft!
+
+Folgender Befehl wird in einem Seperaten Terminal/Commandline ausgeführt: `py Code\ping_client.py --host 127.0.0.1 --port 9000 --n 41`
+
+Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Server wird immer die Zahl X+1 wiedergeben.
+
+`--n` muss eine Zahl sein, ansonnsten wird der Client eine Fehlermeldung ausgeben. `error argument --n: invalid value: "X"
 
 ---
 
+### Betrieb Server UDP
+Folgende Datei wird dazu benötigt: `udp_pong_server.py`
+Starten des Pong Servers über folgenden Befehl in der Kommandozeile:
+`py Code\udp_pong_server.py --host 127.0.0.1 --port 9000`
 
-## Client starten
-> **Hinweis:** Dieser Abschnitt dient als Vorlage und wird später ergänzt.
+Dann erscheint folgendes: ``Pong server listening on 127.0.0.1:9000`` somit ist der Server einsatzbereit und hört Port 9000 ab.
 
-Beispielhafter Start eines Ping-Client:
+Für die Beendung des Servers, muss in der Commandline `Ctrl + C` gedrückt werden.
 
->`ping_server.py`
+### Betrieb Client TCP
+Folgende Datei wird dazu benötigt: `udp_ping_client.py`
+> Voraussetzung der Server läuft!
+
+Folgender Befehl wird in einem Seperaten Terminal/Commandline ausgeführt: `py Code\udp_ping_client.py --host 127.0.0.1 --port 9000 --n 41`
+
+Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Server wird immer die Zahl X+1 wiedergeben.
+
+`--n` muss eine Zahl sein, ansonnsten wird der Client eine Fehlermeldung ausgeben. `error argument --n: invalid value: "X"
 
 
-
----
-
-## Server starten
-> **Hinweis:** Dieser Abschnitt dient als Vorlage und wird später ergänzt.
-
-Beispielhafter Start eines Pong-Servers:
-
->`pong_server.py`
+### Betrieb Proxy Server für TCP
+Folgende Datei wird dazu benötigt: `proxy.py`
