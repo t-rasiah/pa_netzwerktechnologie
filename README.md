@@ -84,9 +84,9 @@ Die Pingpong Anwendung besteht aus einem Server und einem Client
 - `udp_ping_client.py`
 
 ### Ping-Pong mit Proxy
-- Ein Proxy leitet Ping- und Pong-Nachrichten weiter
-- Der Spin bleibt unverändert
-- Simuliert eine verlängerte Übertragungsstrecke
+- Ein Proxy leitet Ping- und Pong-Nachrichten weiter per default von Port 9005 (Client) zu Port 9000 (Server)
+- Nach TCP und UDP Basic habe wir einen Proxy implementiert, um die Trennung von Client, Vermittler und Service zu zeigen. 
+Der Proxy verlängert die Kommunikationsstrecke, ohne das Protokoll zu verändern.
 
 Die Proxyanwendung besteht aus folgender Datei: 
 - `proxy.py` - Proxy Server
@@ -101,7 +101,7 @@ Für die Ausführung des Projekts werden folgende Voraussetzungen benötigt:
 - Grundlegende Kenntnisse in:
   - Python
   - Netzwerkprogrammierung (UDP/TCP)
-  - Kommandozeile
+  - Kommandozeile mind. 3 Tabs für alle Funktionen
 
 ---
 
@@ -174,4 +174,11 @@ Info: Client erkennt Pongzahl als ungültig und gibt Meldung darüber.
 
 
 ### Betrieb Proxy Server für TCP
-Folgende Datei wird dazu benötigt: `proxy.py`
+Folgende Datei wird dazu benötigt: `proxy.py`, `pong_server.py` und `ping_client.py`
+
+Start Server: `py Code\pong_server.py --host 127.0.0.1 --port 9000`
+Start Proxy Server: `py Code\tcp_proxy.py --listen-host 127.0.0.1 --listen-port 9005 --target-host 127.0.0.1 --target-port 9000`
+Ping Client gegen Proxyserver: `py Code\ping_client.py --host 127.0.0.1 --port 9005 --n 41`
+
+
+
