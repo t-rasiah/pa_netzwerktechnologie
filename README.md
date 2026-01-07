@@ -146,7 +146,7 @@ Info: Client erkennt Pongzahl als ungültig und gibt Meldung darüber.
 Folgende Datei wird dazu benötigt: `proxy.py`, `pong_server.py` und `ping_client.py`
 
 Start Server: `py Code\pong_server.py --host 127.0.0.1 --port 9000`  
-Start Proxy Server: `py Code\tcp_proxy.py --listen-host 127.0.0.1 --listen-port 9005 --target-host 127.0.0.1 --target-port 9000`   
+Start Proxy Server: `py Code\proxy.py --listen-host 127.0.0.1 --listen-port 9005 --target-host 127.0.0.1 --target-port 9000`   
 Ping Client gegen Proxyserver: `py Code\ping_client.py --host 127.0.0.1 --port 9005 --n 41`
 
 
