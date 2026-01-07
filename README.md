@@ -65,7 +65,6 @@ Die Ping Pong Anwendung besteht aus einem Server und einem Client
 - `ping_client.py` - Ping Client (TCP)
 - `pong_server.py` - Pong Server (TCP)
 
-
 ### Basic Ping-Pong mit UDP
 - Ein Ping sendet eine Zahl `n` (Spin)
 - Der Pong antwortet mit `n + 1`
