@@ -1,14 +1,14 @@
 # pa_netzwerktechnologie
 # Projektarbeit für Netzwerktechnologie TEKO
 
-Wir haben in dem Modul Netzwerktechnologie den Auftrag erhalten einen Chatserver in Phyton zu programmieren.
+Wir haben in dem Modul Netzwerktechnologie den Auftrag erhalten einen Ping-Pong Protokoll in Phyton zu programmieren.
 Folgendes wurde uns als Auftrag erteilt. 
 
 ## 1 Projekt Ping Pong (Level 1)
 
-**Projektbeschrieb:** Implementiere ein UDP/TCP basierendes Ping-Pong Pro
-tokoll in Python. Ein Ping wird gesendet und mit einem Pong beant
-wortet. Jede Erweiterung des Service (siehe unten für die Erweiterung
+**Projektbeschrieb:** Implementiere ein UDP/TCP basierendes Ping-Pong Protokoll
+in Python. Ein Ping wird gesendet und mit einem Pong beantwortet.
+Jede Erweiterung des Service (siehe unten für die Erweiterung
 gen) gibt zusätzliche Punkte (siehe Notenschlüssel). Jeder Erweiterung
 in einer separaten Datei oder git branch.
 
