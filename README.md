@@ -11,7 +11,7 @@
 
 Dieses Projekt implementiert ein einfaches, aber erweiterbares Ping-Pong-Protokoll in Python auf Basis von UDP / TCP. 
 Ein Ping-Client sendet eine Zahl (den sogenannten Spin) an einen Pong-Server, welcher darauf mit einer modifizierten Antwort reagiert.
-Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
+Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt wird.
 
 ---
 
@@ -98,11 +98,12 @@ Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Serv
 ---
 
 ### Betrieb Server UDP
-Folgende Datei wird dazu benötigt: `udp_pong_server.py`
-Starten des Pong Servers über folgenden Befehl in der Kommandozeile:
+Folgende Datei wird dazu benötigt: `udp_pong_server.py`  
+Starten des Pong Servers über folgenden Befehl in der Kommandozeile:  
 `py Code\udp_pong_server.py --host 127.0.0.1 --port 9000`
 
-Dann erscheint folgendes: ``Pong server listening on 127.0.0.1:9000`` somit ist der Server einsatzbereit und hört Port 9000 ab.
+Dann erscheint folgendes:   
+``Pong server listening on 127.0.0.1:9000`` somit ist der Server einsatzbereit und hört Port 9000 ab.
 
 Für die Beendung des Servers, muss in der Commandline `Ctrl + C` gedrückt werden.
 
@@ -112,8 +113,7 @@ Folgende Datei wird dazu benötigt: `udp_ping_client.py`
 
 Folgender Befehl wird in einem Seperaten Terminal/Commandline ausgeführt: `py Code\udp_ping_client.py --host 127.0.0.1 --port 9000 --n 41`
 
-Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Server wird immer die Zahl X+1 wiedergeben.
-
+Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Server wird immer die Zahl X+1 wiedergeben.  
 `--n` muss eine Zahl sein, ansonnsten wird der Client eine Fehlermeldung ausgeben. `error argument --n: invalid value: "X"
 
 ---
@@ -126,26 +126,27 @@ Folgende Dateien werden benötigt: `udp_pong_server_valid.py` und `udp_ping_clie
 
 Folgende Befehle werden wie bei Basic in die Kommandozeilen eingetragen.
 #### Normalbetrieb (Alles korrekt)
-Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004`
-Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7`
+Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004`  
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7`  
 
 #### Falscher Datentyp (Server sendet Text)
-Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --send-text`
-Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7 --timeout 0.3 --retries 3`
+Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --send-text`  
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7 --timeout 0.3 --retries 3`  
 Info: Client erkennt abc als ungültig, macht retrys und beendet nach Timeoutzeit. 
 
 
 #### Falsche zählung (Server sendet n+2)
-Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --wrong-reply`
-Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7`
+Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --wrong-reply`  
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7`  
 Info: Client erkennt Pongzahl als ungültig und gibt Meldung darüber. 
 
+--- 
 
 ### Betrieb Proxy Server für TCP
 Folgende Datei wird dazu benötigt: `proxy.py`, `pong_server.py` und `ping_client.py`
 
-Start Server: `py Code\pong_server.py --host 127.0.0.1 --port 9000`
-Start Proxy Server: `py Code\tcp_proxy.py --listen-host 127.0.0.1 --listen-port 9005 --target-host 127.0.0.1 --target-port 9000`
+Start Server: `py Code\pong_server.py --host 127.0.0.1 --port 9000`  
+Start Proxy Server: `py Code\tcp_proxy.py --listen-host 127.0.0.1 --listen-port 9005 --target-host 127.0.0.1 --target-port 9000`   
 Ping Client gegen Proxyserver: `py Code\ping_client.py --host 127.0.0.1 --port 9005 --n 41`
 
 
