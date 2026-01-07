@@ -1,49 +1,6 @@
 # pa_netzwerktechnologie
 # Projektarbeit für Netzwerktechnologie TEKO
 
-Wir haben in dem Modul Netzwerktechnologie den Auftrag erhalten einen Ping-Pong Protokoll in Phyton zu programmieren.
-Folgendes wurde uns als Auftrag erteilt. 
-
-## 1 Projekt Ping Pong (Level 1)
-
-**Projektbeschrieb:** Implementiere ein UDP/TCP basierendes Ping-Pong Protokoll
-in Python. Ein Ping wird gesendet und mit einem Pong beantwortet.
-Jede Erweiterung des Service (siehe unten für die Erweiterung
-gen) gibt zusätzliche Punkte (siehe Notenschlüssel). Jeder Erweiterung
-in einer separaten Datei oder git branch.
-
-**Note/Punkte:** Siehe oben für grundlegende Notengebung
-- Implementation des Basic-Ping-Pong Service : 4-5
-- Jedes weitere Feature: +0.3
-
-**Features:** Siehe untenstehende Liste von Ping-pong Services/Architektur
-
-### 1.1.1 Basic Ping-Pong
-Ping sendet eine Zahl n (=spin), und Pong antwortet mit n +1
-
-### 1.1.2 Ping-Pong mit UDP Fehlerbehandlung
-Manchmal können Daten-Fehler entstehen. Ping-Pong mit Fehlerbehand
-lung kann damit umgehen.
-
-### 1.1.3 Ping-Pong mit einem Ping-Pong Proxy
-Der proxy nimmt den ping-pong-pall und verlängert die Flugbahn ohne den
-Spin zu ändern.
-
-### 1.1.4 Kette von Ping-Pongs
-Generalisierung des Ping-Pong-Service: Mehrere PP service provider (PPSP)
-bilden eine Kette.
-
-### 1.1.5 Ping-Pong in einer Stern Topologie
-Implementiert ein eigene statische Stern Topologie, der Hub mach das Stern
-Routing.
-
-### 1.1.6 Ping-Pong in einer vermaschten Topologie
-Due to technical diffculties no image is provided.
-Consider a Mesh-Topology (like the internet) and implement a meshed
-network of ping-pong services on top of it.
-
-Wir werden versuchen dies nach den Vorgaben aufzubauen und möglichst viele Erweiterungen zu implementieren. 
-
 
 # Projekt Ping Pong (Level 1)
 
@@ -51,7 +8,6 @@ Wir werden versuchen dies nach den Vorgaben aufzubauen und möglichst viele Erwe
 Dieses Projekt implementiert ein einfaches, aber erweiterbares Ping-Pong-Protokoll in Python auf Basis von UDP / TCP. 
 Ein Ping-Client sendet eine Zahl (den sogenannten Spin) an einen Pong-Server, welcher darauf mit einer modifizierten Antwort reagiert.
 Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
-
 ---
 
 ## Funktionen
@@ -61,6 +17,8 @@ Das Projekt umfasst folgende Funktionen und Erweiterungen:
 - Ein Ping sendet eine Zahl `n` (Spin)
 - Der Pong antwortet mit `n + 1`
 
+![Ping_Pong_TCP.png](Ping_Pong_TCP.png)
+
 Die Ping Pong Anwendung besteht aus einem Server und einem Client
 - `ping_client.py` - Ping Client (TCP)
 - `pong_server.py` - Pong Server (TCP)
@@ -68,6 +26,8 @@ Die Ping Pong Anwendung besteht aus einem Server und einem Client
 ### Basic Ping-Pong mit UDP
 - Ein Ping sendet eine Zahl `n` (Spin)
 - Der Pong antwortet mit `n + 1`
+
+![Ping_Pong_UDP.png](Ping_Pong_UDP.png)
 
 Die Ping Pong Anwendung besteht aus einem Server und einem Client
 - `udp_ping_client.py` - Ping Client (UDP)
@@ -78,6 +38,8 @@ Die Ping Pong Anwendung besteht aus einem Server und einem Client
 - UDP kann Pakete verlieren oder Müll liefern. Der Client implementiert Timeout+Retry, prüft das Antwortformat und den Datentyp,
 und validiert zusätzlich semantisch, dass die Antwort exakt n+1 ist.
 
+![Ping_Pong_UDP_Fehlerbehandlung.png](Ping_Pong_UDP_Fehlerbehandlung.png)
+
 Die Pingpong Anwendung besteht aus einem Server und einem Client
 - `udp_pong_server.py`
 - `udp_ping_client.py`
@@ -86,6 +48,8 @@ Die Pingpong Anwendung besteht aus einem Server und einem Client
 - Ein Proxy leitet Ping- und Pong-Nachrichten weiter per default von Port 9005 (Client) zu Port 9000 (Server)
 - Nach TCP und UDP Basic habe wir einen Proxy implementiert, um die Trennung von Client, Vermittler und Service zu zeigen. 
 Der Proxy verlängert die Kommunikationsstrecke, ohne das Protokoll zu verändern.
+
+![Ping_Pong_TCP_Proxyserver.png](Ping_Pong_TCP_Proxyserver.png)
 
 Die Proxyanwendung besteht aus folgender Datei: 
 - `proxy.py` - Proxy Server
@@ -124,7 +88,7 @@ Folgender Befehl wird in einem Seperaten Terminal/Commandline ausgeführt: `py C
 
 Die Zahl weche hinter `--n` steht, kann beliebig verändert werden. Bei der Server wird immer die Zahl X+1 wiedergeben.
 
-`--n` muss eine Zahl sein, ansonnsten wird der Client eine Fehlermeldung ausgeben. `error argument --n: invalid value: "X"
+`--n` muss eine Ganzzahl sein, ansonnsten wird der Client eine Fehlermeldung ausgeben. `error argument --n: invalid value: "X"
 
 ---
 
@@ -158,7 +122,7 @@ Folgende Dateien werden benötigt: `udp_pong_server_valid.py` und `udp_ping_clie
 Folgende Befehle werden wie bei Basic in die Kommandozeilen eingetragen.
 #### Normalbetrieb (Alles korrekt)
 Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004`
-Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7
+Client: `py Code\udp_ping_client_valid.py --host 127.0.0.1 --port 9004 --n 41 --id 7`
 
 #### Falscher Datentyp (Server sendet Text)
 Server: `py Code\udp_pong_server_valid.py --host 127.0.0.1 --port 9004 --send-text`
