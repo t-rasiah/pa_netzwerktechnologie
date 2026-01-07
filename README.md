@@ -1,13 +1,18 @@
-# pa_netzwerktechnologie
+## pa_netzwerktechnologie
 # Projektarbeit für Netzwerktechnologie TEKO
+
+---
+
 
 
 # Projekt Ping Pong (Level 1)
 
 ---
+
 Dieses Projekt implementiert ein einfaches, aber erweiterbares Ping-Pong-Protokoll in Python auf Basis von UDP / TCP. 
 Ein Ping-Client sendet eine Zahl (den sogenannten Spin) an einen Pong-Server, welcher darauf mit einer modifizierten Antwort reagiert.
 Das Projekt ist modular aufgebaut, sodass jede Erweiterung separat (z. B. in einer eigenen Datei) umgesetzt werden kann.
+
 ---
 
 ## Funktionen
